@@ -59,7 +59,25 @@
                     </div>
                 </div>
                 <div class="bg-base-50 shadow rounded-box">
+                    <div class="p-5">
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Gambar wisata</legend>
+                            <input type="file" class="file-input w-full" />
+                            <label class="label">Max size 2MB</label>
+                        </fieldset>
 
+                        <div class="mt-5">
+                            <label class="floating-label">
+                                <span>Keterangan</span>
+                                <textarea name="keterangan" placeholder="Keterangan" class="input input-md w-full h-30"></textarea>
+                            </label>
+                        </div>
+
+                        <div class="mt-5">
+                            <button class="btn btn-primary"><i class="fas fa-file"></i> Simpan</button>
+                            <a href="/wisata" class="btn btn-error text-white"><i class="fas fa-close"></i> Close</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
