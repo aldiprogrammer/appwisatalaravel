@@ -1,7 +1,7 @@
 @extends('layout.template')
 @section('content')
     <div class="min-h-screen bg-base-100 rounded-box">
-        <h1 class="font-bold text-2xl py-4 px-4">Tambah </h1>
+        <h1 class="font-bold text-2xl py-4 px-4">Edit wisata </h1>
         <div class="mt-5 px-5">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div class=" bg-base-150 rounded-box shadow">
@@ -15,11 +15,13 @@
                             <span>Input data wisata dengan benar dan tepat</span>
                         </div>
 
-                        <form action="{{ route('wisata.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('wisata.update', $ws->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
+                            @method('put');
                             <div class="mt-3">
                                 <select class="select select-neutral w-full" name="kategori">
-                                    <option disabled selected>Pilih kategori</option>
+
+                                    <option value="{{ $ws->kategori }}">{{ $ws->kategoritr->kategori }}</option>
                                     @foreach ($data['kategori'] as $item)
                                         <option value="{{ $item->id }}">{{ $item->kategori }}</option>
                                     @endforeach
@@ -32,7 +34,7 @@
                                 <label class="floating-label">
                                     <span>Nama wisata</span>
                                     <input type="text" placeholder="Nama wisata" name="nama" required
-                                        class="input input-md w-full" />
+                                        class="input input-md w-full" value="{{ $ws->wisata }}" />
                                 </label>
                             </div>
 
@@ -40,7 +42,7 @@
                                 <label class="floating-label">
                                     <span>Lokas wisata</span>
                                     <input type="text" placeholder="Lokasi wisata" name="lokasi" required
-                                        class="input input-md w-full" />
+                                        class="input input-md w-full" value="{{ $ws->lokasi }}" />
                                 </label>
                             </div>
 
@@ -48,7 +50,7 @@
                                 <label class="floating-label">
                                     <span>Latitude</span>
                                     <input type="text" placeholder="Latitude" name="lat" required
-                                        class="input input-md w-full" />
+                                        class="input input-md w-full" value="{{ $ws->latitude }}" />
                                 </label>
                             </div>
 
@@ -56,7 +58,7 @@
                                 <label class="floating-label">
                                     <span>Longtitude</span>
                                     <input type="text" placeholder="Longtitude" name="long" required
-                                        class="input input-md w-full" />
+                                        class="input input-md w-full" value="{{ $ws->longitude }}" />
                                 </label>
                             </div>
                     </div>
@@ -65,6 +67,7 @@
                     <div class="p-5">
                         <fieldset class="fieldset">
                             <legend class="fieldset-legend">Gambar wisata</legend>
+                            <img src="{{ asset('storage/' . $ws->gambar) }}" alt="" class="w-30 h-30">
                             <input type="file" class="file-input w-full" name="gambar" />
                             <label class="label">Max size 2MB</label>
                         </fieldset>
@@ -72,7 +75,8 @@
                         <div class="mt-5">
                             <label class="floating-label">
                                 <span>Keterangan</span>
-                                <textarea name="keterangan" placeholder="Keterangan" class="input input-md w-full h-30"></textarea>
+                                <textarea name="keterangan" placeholder="Keterangan" class="input input-md w-full h-30">{{ $ws->keterangan }}
+                                </textarea>
                             </label>
                         </div>
 

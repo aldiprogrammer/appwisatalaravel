@@ -19,12 +19,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
                         @foreach ($data['wisata'] as $item)
                             <tr>
-                                <th>1</th>
-                                <td>Cy Ganderton</td>
-                                <td>Quality Control Specialist</td>
-                                <td>Blue</td>
+                                <th>{{ $no++ }}</th>
+                                <td>{{ $item->kategoritr->kategori }}</td>
+                                <td>{{ $item->wisata }}</td>
+                                <td><img src="{{ asset('storage/' . $item->gambar) }}" alt="" class="w-20 h-20"></td>
+                                <td>
+                                    <a href="editwisata/{{ $item->id }}" class="btn btn-info btn-sm"><i
+                                            class="fas fa-pen"></i> Edit</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
