@@ -14,13 +14,19 @@
                         </form>
                         <h3 class="text-lg font-bold">Tambah data</h3>
                         <div class="mt-4">
-                            <form action="{{ route('store') }}" method="post">
+                            <form action="{{ route('kategori.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <label class="floating-label">
                                     <span>Kategori</span>
                                     <input type="text" placeholder="Kategori" name="kategori" required
                                         class="input input-md w-full" />
                                 </label>
+
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset-legend">Icon</legend>
+                                    <input type="file" class="file-input w-full" name="icon" />
+                                    <label class="label">Max size 2MB</label>
+                                </fieldset>
                                 <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                             </form>
                         </div>
@@ -40,6 +46,7 @@
                         <tr>
                             <th>No</th>
                             <th>Kategori</th>
+                            <th>Icon</th>
                             <th>Opsi</th>
 
                         </tr>
@@ -52,6 +59,12 @@
                             <tr>
                                 <th>{{ $no++ }}</th>
                                 <td>{{ $item->kategori }}</td>
+                                <td>
+                                    <div class="rounded-full">
+                                        <img class="w-20 rounded-full" src="{{ asset('storage/' . $item->icon) }}"
+                                            alt="">
+                                    </div>
+                                </td>
                                 <td>
                                     <button class="btn btn-soft btn-warning"
                                         onclick="my_modal_{{ $item->id }}.showModal()"><i class="fas fa-pen"></i>
@@ -68,7 +81,8 @@
                                     </form>
                                     <h3 class="text-lg font-bold">Edit data</h3>
                                     <div class="mt-5">
-                                        <form action="{{ route('update', $item->id) }}" method="post">
+                                        <form action="{{ route('update', $item->id) }}" method="post"
+                                            enctype="multipart/form-data">
                                             @csrf
                                             @method('put')
                                             <label class="floating-label">
@@ -76,6 +90,12 @@
                                                 <input type="text" placeholder="Kategori" value="{{ $item->kategori }}"
                                                     name="kategori" required class="input input-md w-full" />
                                             </label>
+
+                                            <fieldset class="fieldset">
+                                                <legend class="fieldset-legend">Icon</legend>
+                                                <input type="file" class="file-input w-full" name="icon" />
+                                                <label class="label">Max size 2MB</label>
+                                            </fieldset>
                                             <button type="submit" class="btn btn-primary mt-3">Edit</button>
                                         </form>
                                     </div>

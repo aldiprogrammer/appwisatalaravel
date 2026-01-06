@@ -22,7 +22,7 @@
     <div class="min-h-screen flex justify-center bg-slate-100">
         <div class="w-[390px] bg-white shadow-xl">
             {{-- navbar --}}
-            <div class="navbar bg-primary shadow-sm">
+            <div class="navbar bg-primary shadow-sm sticky top-0 z-50">
                 <div class="flex-1">
                     <a class="btn btn-ghost text-xl text-white">daisyUI</a>
                 </div>
@@ -80,7 +80,45 @@
             </div>
             <div class="mt-10 mx-3 bg-secondary h-40 rounded-box shadow p-4">
                 <span class="text-white"><i class="fas fa-border-all"></i> Daftar menu</span>
-                <div></div>
+                <div class="mt-5 grid grid-cols-4">
+                    @foreach ($data['kategori'] as $item)
+                        <div class="text-center">
+                            <center>
+                                <img class="w-10" src="{{ asset('storage/' . $item->icon) }}" alt="">
+                            </center>
+                            <small class="text-white">{{ $item->kategori }}</small>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="mx-3 my-4">
+                <small class="text-success"><i class="fas fa-star"></i> Wisata Favorit</small>
+                <div class="mt-3">
+                    <div class="grid grid-cols-2 gap-3">
+                        @foreach ($data['wisata'] as $item)
+                            <div class="card bg-base-100 shadow-lg">
+                                <figure class="h-40 overflow-hidden">
+                                    <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->wisata }}"
+                                        class="w-full h-full object-cover" />
+                                </figure>
+
+                                <div class="card-body">
+                                    <h3 class="text-1xl font-[500]">
+                                        {{ $item->wisata }}
+                                    </h3>
+                                    <small class="text-success">
+                                        <i class="fas fa-location"></i> {{ $item->lokasi }} <i
+                                            class="fas fa-filter"></i> {{ $item->kategoritr->kategori }}
+                                    </small>
+                                    <a href=""
+                                        class="btn btn-success btn-sm w-full rounded-full text-white">Kunjungi</a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

@@ -31,6 +31,7 @@
                                 <td>
                                     <a href="editwisata/{{ $item->id }}" class="btn btn-info btn-sm"><i
                                             class="fas fa-pen"></i> Edit</a>
+
                                 </td>
                             </tr>
                         @endforeach
