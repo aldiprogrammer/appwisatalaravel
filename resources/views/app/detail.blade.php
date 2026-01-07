@@ -56,7 +56,46 @@
                         <input type="radio" name="my_tabs_4" />
                         <i class="fas fa-star"></i> Komentar
                     </label>
-                    <div class="tab-content bg-base-100 p-2">Review</div>
+                    <div class="tab-content bg-base-100 p-2">
+                        <div class="chat chat-start">
+                            <div class="chat-image avatar">
+                                <div class="w-10 rounded-full">
+                                    <img alt="Tailwind CSS chat bubble component"
+                                        src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp" />
+                                </div>
+                            </div>
+                            <div class="chat-bubble">It was said that you would, destroy the Sith, not join them.</div>
+                        </div>
+                        <div class="chat chat-start">
+                            <div class="chat-image avatar">
+                                <div class="w-10 rounded-full">
+                                    <img alt="Tailwind CSS chat bubble component"
+                                        src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp" />
+                                </div>
+                            </div>
+                            <div class="chat-bubble">It was you who would bring balance to the Force</div>
+                        </div>
+                        <div class="chat chat-start">
+                            <div class="chat-image avatar">
+                                <div class="w-10 rounded-full">
+                                    <img alt="Tailwind CSS chat bubble component"
+                                        src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp" />
+                                </div>
+                            </div>
+                            <div class="chat-bubble">Not leave it in Darkness</div>
+                        </div>
+
+                        <div class="mt-5">
+                            <form class="flex gap-2" method="post" action="{{ route('komentar', $detail->id) }}">
+                                @csrf
+                                <input type="text" placeholder="Masukkan komentar..." class="input input-bordered w-full"
+                                    name="komentar" required />
+                                <button class="btn btn-primary">
+                                    <i class="far fa-paper-plane"></i>Kirim
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
             </div>

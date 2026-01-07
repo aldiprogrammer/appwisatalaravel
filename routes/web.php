@@ -22,3 +22,4 @@ Route::put('editwisata/{id}', [WisataController::class, 'update'])->name('wisata
 
 Route::get('/app', [HomeController::class, 'index'])->name('home');
 Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('detail');
+Route::post('/komentar/{id}', [HomeController::class, 'komentar'])->name('komentar');
