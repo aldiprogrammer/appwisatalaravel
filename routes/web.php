@@ -21,3 +21,4 @@ Route::get('editwisata/{id}', [WisataController::class, 'edit'])->name('wisata.e
 Route::put('editwisata/{id}', [WisataController::class, 'update'])->name('wisata.update');
 
 Route::get('/app', [HomeController::class, 'index'])->name('home');
+Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('detail');

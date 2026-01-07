@@ -14,4 +14,16 @@ class HomeController extends Controller
         $data = ['title' => 'App wisata', 'kategori' => Kategori::all(), 'wisata' => Wisata::with('kategoritr')->get()];
         return view('app/index', compact('data'));
     }
+
+    function detail($id)
+    {
+
+
+        $detail =  Wisata::with('kategoritr')->where('id', $id)->first();
+        $data = [
+            'title' => $detail->wisata,
+
+        ];
+        return view('app/detail', compact('data', 'detail'));
+    }
 }
