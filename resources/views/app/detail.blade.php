@@ -22,7 +22,7 @@
     <div class="mx-3 bg-base-100 rounded-box shadow">
         <div class="p-3">
             <div class="mb-1 text-dark font-bold  text-xl"> <i class="fas fa-map"></i> {{ $detail->wisata }}</div>
-            <div class="text-gray"><i class="fas fa-location-dot"></i> {{ $detail->lokasi }}</div>
+            <div class="text-success"><i class="fas fa-location-dot"></i> {{ $detail->lokasi }}</div>
             <div class="mt-3">
                 <!-- name of each tab group should be unique -->
 
@@ -62,7 +62,7 @@
 
                     <label class="tab">
                         <input type="radio" name="my_tabs_4" />
-                        <i class="fas fa-star"></i> Komentar
+                        <i class="fas fa-comment-dots"></i> Komentar
                     </label>
                     <div class="tab-content bg-base-100 p-2">
 
@@ -106,14 +106,15 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
 
     <div class="mx-3 mt-4">
-        <button class="btn btn-success btn-sm rounded-full w-full sticky "><i class="fas fa-location-dot"></i>Kunjungi
-            wisata</button>
+        <a target="_blank" href="https://www.google.com/maps?q={{ $detail->latitude }},{{ $detail->longitude }}"
+            class="btn btn-success btn-sm rounded-full w-full sticky text-white "><i
+                class="fas fa-location-dot"></i>Kunjungi
+            wisata</a>
     </div>
 @endsection

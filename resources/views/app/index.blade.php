@@ -12,10 +12,12 @@
         <div class="mt-5 grid grid-cols-4">
             @foreach ($data['kategori'] as $item)
                 <div class="text-center">
-                    <center>
-                        <img class="w-10" src="{{ asset('storage/' . $item->icon) }}" alt="">
-                    </center>
-                    <small class="text-white">{{ $item->kategori }}</small>
+                    <a href="/wisata/{{ $item->id }}" style="text-decoration: none">
+                        <center>
+                            <img class="w-10" src="{{ asset('storage/' . $item->icon) }}" alt="">
+                        </center>
+                        <small class="text-white">{{ $item->kategori }}</small>
+                    </a>
                 </div>
             @endforeach
         </div>

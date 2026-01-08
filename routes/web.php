@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\KategoriController;
 use App\Http\Controllers\admin\WisataController;
 use App\Http\Controllers\app\HomeController;
+use App\Http\Controllers\app\WisataController as AppWisataController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,3 +24,4 @@ Route::put('editwisata/{id}', [WisataController::class, 'update'])->name('wisata
 Route::get('/app', [HomeController::class, 'index'])->name('home');
 Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('detail');
 Route::post('/komentar/{id}', [HomeController::class, 'komentar'])->name('komentar');
+Route::get('/wisata/{id}', [AppWisataController::class, 'index'])->name('appwisata');
