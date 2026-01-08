@@ -100,6 +100,18 @@
 
         })
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toast = document.getElementById('toast-success');
+            if (toast) {
+                toast.style.display = 'block'; // tampilkan
+                setTimeout(() => {
+                    toast.style.display = 'none'; // hilangkan otomatis
+                }, 3000); // 3000ms = 3 detik
+            }
+        });
+    </script>
 </body>
 
 </html>

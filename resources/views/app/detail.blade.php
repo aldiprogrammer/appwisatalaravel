@@ -27,6 +27,14 @@
                 <!-- name of each tab group should be unique -->
 
                 <!-- name of each tab group should be unique -->
+
+                @if (session('success'))
+                    <div id="toast-success" class="toast toast-center toast-middle" style="display: none;">
+                        <div class="alert alert-success text-white">
+                            <span>{{ session('success') }}</span>
+                        </div>
+                    </div>
+                @endif
                 <div class="tabs tabs-lift">
                     <label class="tab">
                         <input type="radio" name="my_tabs_4" checked="checked" />
@@ -57,33 +65,34 @@
                         <i class="fas fa-star"></i> Komentar
                     </label>
                     <div class="tab-content bg-base-100 p-2">
-                        <div class="chat chat-start">
-                            <div class="chat-image avatar">
-                                <div class="w-10 rounded-full">
-                                    <img alt="Tailwind CSS chat bubble component"
-                                        src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp" />
-                                </div>
+
+
+
+                        @if ($komentar->isEmpty())
+                            <div class="text-center text-sm text-error m-10 font-[300]">Data komentar belum ada, jadilah
+                                orang pertama
+                                yang
+                                memberi
+                                komentar
                             </div>
-                            <div class="chat-bubble">It was said that you would, destroy the Sith, not join them.</div>
-                        </div>
-                        <div class="chat chat-start">
-                            <div class="chat-image avatar">
-                                <div class="w-10 rounded-full">
-                                    <img alt="Tailwind CSS chat bubble component"
-                                        src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp" />
+                        @else
+                            @foreach ($komentar as $item)
+                                <div class="chat chat-start">
+                                    <div class="chat-image avatar">
+                                        <div class="w-10 rounded-full">
+                                            <img alt="Tailwind CSS chat bubble component"
+                                                src="https://static.vecteezy.com/system/resources/previews/009/346/271/non_2x/3d-render-icon-bubble-speech-illustration-free-png.png" />
+                                        </div>
+                                    </div>
+                                    <div class="chat-bubble text-sm">
+                                        {{ $item->komentar }}
+                                        <div> <small class="text-xs text-success">{{ $item->tanggal }}</small></div>
+
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="chat-bubble">It was you who would bring balance to the Force</div>
-                        </div>
-                        <div class="chat chat-start">
-                            <div class="chat-image avatar">
-                                <div class="w-10 rounded-full">
-                                    <img alt="Tailwind CSS chat bubble component"
-                                        src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp" />
-                                </div>
-                            </div>
-                            <div class="chat-bubble">Not leave it in Darkness</div>
-                        </div>
+                            @endforeach
+                        @endif
+
 
                         <div class="mt-5">
                             <form class="flex gap-2" method="post" action="{{ route('komentar', $detail->id) }}">
